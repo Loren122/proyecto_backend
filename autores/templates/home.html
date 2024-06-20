@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carátula del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white font-bold text-xl">Proyecto de Backend</h1>
+            <ul class="flex space-x-4">
+                <li><a href="/" class="text-white hover:text-gray-200">Inicio</a></li>
+                <li><a href="/index_autores/" class="text-white hover:text-gray-200">Autores</a></li>
+                <li><a href="/index_libros/" class="text-white hover:text-gray-200">Libros</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto mt-10 p-8 bg-white rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-4">Bienvenido a mi Proyecto de Backend</h2>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <p><span class="font-bold">Nombre:</span> Lorenzo Paredes</p>
+                <p><span class="font-bold">Profesor:</span> Walter Bel</p>
+                <p><span class="font-bold">Curso:</span> Arquitecturas para manejo de Backend</p>
+                <p><span class="font-bold">Fecha:</span> 20 de junio de 2024</p>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="text-xl font-bold mb-2">Descripción del Proyecto</h3>
+            <p class="mb-4">Este proyecto tiene como objetivo desarrollar una aplicación de gestión de biblioteca
+                utilizando tecnologías backend modernas.</p>
+            <p class="mb-4">En este proyecto aprendimos a integrar Django para la gestión de datos y API RESTful para
+                la comunicación entre frontend y backend.</p>
+        </div>
+
+        <div class="mt-8 flex justify-center space-x-4">
+            <a href="{% url 'new_autor' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Añadir Nuevo Autor
+            </a>
+            <a href="{% url 'new_libro' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Añadir Nuevo Libro
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

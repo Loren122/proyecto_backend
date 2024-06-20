@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render #, redirect
 from django.http import JsonResponse
 from django.views.generic import ListView, CreateView
 # from django.db.models import Count
@@ -8,6 +8,9 @@ from autores.serializers import AutorSerializer, LibroSerializer
 from autores.forms import AutorForm, LibroForm
 
 # Create your views here.
+
+def home(request):
+    return render(request, 'home.html')
 
 def get_all_autores():
     autores = Autor.objects.all().order_by('name')
@@ -33,7 +36,7 @@ def index_autores(request):
 
 def index_libros(request):
     libros = get_all_libros()
-    return render(request, 'index.libros', {'libros': libros})
+    return render(request, 'index_libros.html', {'libros': libros})
 
 class AutorListView(ListView):
     model = Autor
@@ -42,6 +45,15 @@ class AutorListView(ListView):
 
     def get_queryset(self):
         return Autor.objects.prefetch_related('libros')
+    
+
+class LibroListView(ListView):
+    model = Libro
+    template_name = 'index_libros.html'
+    context_object_name = 'libros'
+
+    def get_queryset(self):
+        return Libro.objects.select_related('autor')
     
 # def add_autor(request):
 #     if request.method == 'POST':
@@ -73,4 +85,4 @@ class NewAutorView(CreateView):
 class NewLibroView(CreateView):
     form_class = LibroForm
     template_name = 'form_libro.html'
-    success_url = '/index_autores/'
+    success_url = '/index_libros/'

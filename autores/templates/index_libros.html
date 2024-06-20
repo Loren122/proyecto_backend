@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Autores</title>
-
+    <title>Lista de Libros</title>
+    <!-- Enlace al archivo de estilos de Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -23,30 +23,23 @@
     </nav>
 
     <div class="container mx-auto mt-10">
-        <h2 class="text-2xl font-bold mb-5">Lista de Autores</h2>
+        <h2 class="text-2xl font-bold mb-5">Lista de Libros</h2>
         <table class="table-auto w-full bg-white rounded-lg shadow-lg">
             <thead>
                 <tr class="bg-blue-500 text-white">
-                    <th class="px-4 py-2">Nombre</th>
-                    <th class="px-4 py-2">Biografía</th>
-                    <th class="px-4 py-2">Libros</th>
+                    <th class="px-4 py-2">Título</th>
+                    <th class="px-4 py-2">Sinopsis</th>
+                    <th class="px-4 py-2">Fecha de Publicación</th>
+                    <th class="px-4 py-2">Autor</th>
                 </tr>
             </thead>
             <tbody>
-                {% for autor in autores %}
+                {% for libro in libros %}
                 <tr class="bg-gray-100">
-                    <td class="border px-4 py-2">{{ autor.name }}</td>
-                    <td class="border px-4 py-2">{{ autor.biografia }}</td>
-                    <td class="border px-4 py-2">
-                        <ul>
-                            {% for libro in autor.libros.all %}
-                            <li><span class="text-blue-500">&#8226;</span> {{ libro.titulo }}</li>
-                            {% if forloop.last == false %}
-                            <div class="my-3"></div>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </td>
+                    <td class="border px-4 py-2">{{ libro.titulo }}</td>
+                    <td class="border px-4 py-2">{{ libro.sinopsis }}</td>
+                    <td class="border px-4 py-2">{{ libro.fecha_publicacion }}</td>
+                    <td class="border px-4 py-2">{{ libro.autor.name }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
