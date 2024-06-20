@@ -26,5 +26,7 @@ class LibroForm(forms.ModelForm):
         model =  Libro
         fields = [
             'titulo',
+            'sinopsis',
+            'fecha_publicacion',
             'autor',
         ]

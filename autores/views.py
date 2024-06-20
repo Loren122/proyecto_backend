@@ -43,15 +43,26 @@ class AutorListView(ListView):
     def get_queryset(self):
         return Autor.objects.prefetch_related('libros')
     
-def add_autor(request):
-    if request.method == 'POST':
-        form = AutorForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('autores:index_autores')  # Ajusta esto a la vista que muestra la lista de autores
-    else:
-        form = AutorForm()
-    return render(request, 'autores/form_autor.html', {'form': form})    
+# def add_autor(request):
+#     if request.method == 'POST':
+#         form = AutorForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('autores:index_autores')  # Ajusta esto a la vista que muestra la lista de autores
+#     else:
+#         form = AutorForm()
+#     return render(request, 'autores/form_autor.html', {'form': form})
+
+# def add_libro(request):
+#     if request.method == 'POST':
+#         form = LibroForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('ruta_de_redireccion')  # Ajusta la ruta de redirección
+#     else:
+#         form = LibroForm()
+    
+#     return render(request, 'nombre_de_tu_plantilla.html', {'form': form})
 
 class NewAutorView(CreateView):
     form_class = AutorForm
@@ -61,5 +72,5 @@ class NewAutorView(CreateView):
 
 class NewLibroView(CreateView):
     form_class = LibroForm
-    template_name = 'form_autor.html'
-    success_url = '/'
+    template_name = 'form_libro.html'
+    success_url = '/index_autores/'

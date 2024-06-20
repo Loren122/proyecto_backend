@@ -8,5 +8,4 @@ urlpatterns = [
     path('libros_rest/', views.libros_rest, name='libros_rest'),
     path('new_autor/', views.NewAutorView.as_view(), name='new_autor'),
     path('new_libro/', views.NewLibroView.as_view(), name='new_libro'),
-    path('add_autor/', views.add_autor, name='add_autor'),
 ]
